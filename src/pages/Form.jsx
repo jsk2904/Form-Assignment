@@ -5,6 +5,7 @@ import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 import validator from 'validator'
 import content from '../radioButtonFields/index.js'
+import Modal from '../components/Model'
 const Form = () => {
 	const {
 		register,
@@ -12,14 +13,14 @@ const Form = () => {
 		formState: { errors },
 	} = useForm()
 	const [state, setState] = useState({
-		textField: '',
 		username: '',
 		email: '',
-		service: '',
 		beverage: '',
-		cleanliness: '',
 		diningExperience: '',
+		service: '',
+		cleanliness: '',
 		phone: '',
+		textField: '',
 	})
 	const handleChange = (e) => {
 		setState({ ...state, [e.target.name]: e.target.value })
@@ -194,9 +195,10 @@ const Form = () => {
 								})}
 							</div>
 
-							<button className='fluid ui button green' type='submit'>
+							<Modal formState={state} />
+							{/* <button className='fluid ui button green' type='submit'>
 								submit
-							</button>
+							</button> */}
 						</div>
 					</div>
 					<div className='ui vertical divider'></div>
